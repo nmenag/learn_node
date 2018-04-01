@@ -7,7 +7,8 @@
     "lodash": "^4.17.5",
     "npm": "^5.8.0",
     "to": "^0.2.9",
-    "update": "^0.7.4"
+    "update": "^0.7.4",
+    "yargs": "^11.0.0"
   },
   "devDependencies": {},
   "scripts": {

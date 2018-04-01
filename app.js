@@ -3,10 +3,30 @@ console.log('starting app.');
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
+const yargs = require('yargs');
 const notes = require('./notes.js');
 
-var filteredArray = _.uniq(['nicolas', 1, 'nicolas', 1, 2, 3, 4, 5])
-console.log(filteredArray);
+var filteredArray = _.uniq(['nicolas', 2])
+// console.log(filteredArray);
+
+const argv = yargs.argv;
+var command = process.argv[2];
+
+console.log('command: ', command);
+console.log('Process: ', process.argv);
+console.log('Yargs: ', argv);
+
+if (command === 'add'){
+  console.log('adding new note');
+  notes.addNote(argv.title, argv.body);
+}
+else if(command === 'list') {
+  console.log('listing all notes');
+}
+else {
+  console.log('Command not recognized');
+}
+
 
 // console.log(_.isString(true));
 // console.log(_.isString('Andrew'));
