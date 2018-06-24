@@ -5,16 +5,32 @@ const os = require('os');
 const _ = require('lodash');
 const yargs = require('yargs');
 const notes = require('./notes.js');
+const titleOptions={
+  describe: "Title of note",
+  demand: true,
+  alias: 't'
+}
 
-var filteredArray = _.uniq(['nicolas', 2])
-// console.log(filteredArray);
+const bodyOptions = {
+  describe: 'body of note',
+  demand: true,
+  alias: 'b'
+}
 
-const argv = yargs.argv;
-var command = process.argv[2];
+const argv = yargs.command('add', 'Add a  new note', {
+  title: titleOptions,
+  body:bodyOptions
 
-console.log('command: ', command);
-console.log('Process: ', process.argv);
-console.log('Yargs: ', argv);
+}).command('list', 'List all notes')
+.command('read', 'read a note',{
+  title: titleOptions
+})
+.command('remove', 'remove a note', {
+  title: titleOptions
+})
+.help().argv;
+
+var command = argv._[0];
 
 if (command === 'add'){
   console.log('adding new note');
